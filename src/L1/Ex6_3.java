@@ -3,9 +3,28 @@ package L1;
 import java.util.Scanner;
 
 public class Ex6_3 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = Integer.parseInt(sc.nextLine());
 
+        System.out.print("Nhap chieu cao n: ");
+        if (sc.hasNextInt()) {
+            int n = sc.nextInt();
+
+            for (int i = 1; i <= n; i++) {
+                for (int j = 1; j <= n - i; j++) {
+                    System.out.print(" ");
+                }
+
+                for (int k = 1; k <= (2 * i - 1); k++) {
+                    System.out.print("*");
+                }
+
+                System.out.println();
+            }
+        } else {
+            System.out.println("Vui long nhap mot so nguyen hop le!");
+        }
+
+        sc.close();
     }
 }
