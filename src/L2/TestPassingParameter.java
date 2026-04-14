@@ -1,7 +1,7 @@
 package L2;
 
 
-public class giTestPassingParameter {
+public class TestPassingParameter {
     public static void main(String[] args){
         DigitalVideoDisc jungleDVD = new DigitalVideoDisc("Jungle");
         DigitalVideoDisc cinderellaDVD = new DigitalVideoDisc("Cinderella");
