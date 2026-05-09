@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AimsProject/AimsProject.iml" filepath="$PROJECT_DIR$/AimsProject/AimsProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/OOP.Lab.20252.202416991.NguyenVietNgoc.iml" filepath="$PROJECT_DIR$/OOP.Lab.20252.202416991.NguyenVietNgoc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OtherProjects/OtherProjects.iml" filepath="$PROJECT_DIR$/OtherProjects/OtherProjects.iml" />
     </modules>
   </component>
 </project>
