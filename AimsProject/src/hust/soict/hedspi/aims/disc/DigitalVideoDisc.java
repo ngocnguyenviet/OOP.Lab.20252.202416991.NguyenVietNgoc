@@ -83,4 +83,29 @@ public class DigitalVideoDisc {
     public void setCost(float cost) {
         this.cost = cost;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public boolean isMatch(String title){
+        if(title == null || title.trim().isEmpty()){
+            return false;
+        }
+
+        String lowerCaseTitle = this.title.toLowerCase();
+        String[] keywords = title.toLowerCase().split("\\s+");
+
+        for(String word : keywords){
+            if(lowerCaseTitle.contains(word)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public String toString(){
+        return id + ". DVD - " + title + " - " + category + " - " + director + " - " + length + ": " + cost + "$";
+    }
 }

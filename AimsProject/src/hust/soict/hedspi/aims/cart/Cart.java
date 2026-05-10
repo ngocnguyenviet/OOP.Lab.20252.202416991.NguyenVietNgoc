@@ -1,5 +1,7 @@
 package hust.soict.hedspi.aims.cart;
 
+import hust.soict.hedspi.aims.disc.DigitalVideoDisc;
+
 public class Cart {
 
     public static final int MAX_NUMBERS_ORDERED = 20;
@@ -72,13 +74,53 @@ public class Cart {
         return sum;
     }
 
-    public void viewCart(){
+    public void viewCart1(){
         if(qtyOrdered == 0) {
             System.out.println("The cart is empty!");
             return;
         }
         for(int i = 0; i < qtyOrdered; i++){
             System.out.println(itemsOrdered[i].getTitle());
+        }
+    }
+
+    public void viewCart2(){
+        System.out.println("***********************CART***********************");
+        System.out.println("Ordered Items: ");
+        for(int i = 0; i < qtyOrdered; i++){
+            System.out.println(itemsOrdered[i].toString());
+        }
+
+        System.out.println("Total Cost: " + totalCost());
+        System.out.println("***************************************************");
+    }
+
+    public void searchByID(int id){
+        boolean found = false;
+        for(int i = 0; i < qtyOrdered; i++){
+            if(itemsOrdered[i].getId() == id){
+                System.out.println("Found match for ID" + id + ":");
+                System.out.println(itemsOrdered[i].toString());
+                found = true;
+                break;
+            }
+        }
+        if(!found){
+            System.out.println("No matching found for ID: " + id);
+        }
+    }
+
+    public void searchByTitle(String title){
+        boolean found = false;
+        System.out.println("Search results for title: \"" + title + "\"");
+        for(int i = 0; i < qtyOrdered; i++){
+            if (itemsOrdered[i].isMatch(title)){
+                System.out.println(itemsOrdered[i].toString());
+                found = true;
+            }
+        }
+        if(!found) {
+            System.out.println("No matching found for title: \"" + title + "\"");
         }
     }
 }
