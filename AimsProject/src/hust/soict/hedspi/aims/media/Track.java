@@ -18,23 +18,23 @@ public class Track implements Playable {
     }
 
     @Override
-    public String toString(){
-        return title + " - " + length;
-    }
-
-    @Override
     public void play(){
         System.out.println("Playing track: " + getTitle());
         System.out.println("Track length: " + getLength());
     }
 
-//    @Override
-//    public boolean equals(Object obj){
-//        if(obj == null || !(obj instanceof Track)){
-//            return false;
-//        }
-//        Track other = (Track) obj;
-//        return (this.title != null && this.title.equalsIgnoreCase(other.getTitle()))
-//        && (this.length == other.getLength());
-//    }
+    @Override
+    public boolean equals(Object obj){
+        if(obj == null || !(obj instanceof Track)){
+            return false;
+        }
+        Track other = (Track) obj;
+        return (this.title != null && this.title.equalsIgnoreCase(other.getTitle()))
+        && (this.length == other.getLength());
+    }
+
+    @Override
+    public String toString(){
+        return "Track: " + title + " (Length: " + length + " min)";
+    }
 }
