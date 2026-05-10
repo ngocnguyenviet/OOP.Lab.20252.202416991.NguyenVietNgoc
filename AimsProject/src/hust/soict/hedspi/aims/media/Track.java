@@ -28,13 +28,13 @@ public class Track implements Playable {
         System.out.println("Track length: " + getLength());
     }
 
-//    @Override
-//    public boolean equals(Object obj){
-//        if(obj == null || !(obj instanceof Track)){
-//            return false;
-//        }
-//        Track other = (Track) obj;
-//        return (this.title != null && this.title.equalsIgnoreCase(other.getTitle()))
-//        && (this.length == other.getLength());
-//    }
+    @Override
+    public boolean equals(Object obj){
+        if(obj == null || !(obj instanceof Track)){
+            return false;
+        }
+        Track other = (Track) obj;
+        return (this.title != null && this.title.equalsIgnoreCase(other.getTitle()))
+        && (this.length == other.getLength());
+    }
 }

@@ -65,16 +65,16 @@ public abstract class Media {
         return false;
     }
 
-//    @Override
-//    public boolean equals(Object obj){
-//        if(obj == null || !(obj instanceof Media)){
-//            return false;
-//        }
-//
-//        Media other = (Media) obj;
-//        if(this.title == null || other.getTitle() == null){
-//            return false;
-//        }
-//        return this.title.equalsIgnoreCase(other.getTitle());
-//    }
+    @Override
+    public boolean equals(Object obj){
+        if(obj == null || !(obj instanceof Media)){
+            return false;
+        }
+
+        Media other = (Media) obj;
+        if(this.title == null || other.getTitle() == null){
+            return false;
+        }
+        return this.title.equalsIgnoreCase(other.getTitle());
+    }
 }
