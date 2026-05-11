@@ -29,7 +29,7 @@ public class Store {
     }
 
     public void printStore(){
-        System.out.print("***********************STORE***********************");
+        System.out.println("***********************STORE***********************");
         if(itemsInStore.isEmpty()){
             System.out.println("No items in store");
         } else {
@@ -38,5 +38,14 @@ public class Store {
             }
         }
         System.out.println("***************************************************");
+    }
+
+    public Media searchByTitle(String title){
+        for(Media media : itemsInStore){
+            if(media.isMatch(title)){
+                return media;
+            }
+        }
+        return null;
     }
 }
