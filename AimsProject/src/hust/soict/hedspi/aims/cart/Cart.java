@@ -58,18 +58,12 @@ public class Cart {
         }
     }
 
-    public void searchByTitle(String title){
-        boolean found = false;
-        System.out.println("Search results for title: \"" + title + "\"");
+    public Media searchByTitle(String title){
         for(Media media : itemsOrdered){
-            if(media.isMatch(title)){
-                System.out.println("Found match");
-                found = true;
-            }
+            if(media.isMatch(title))
+                return media;
         }
-        if(!found){
-            System.out.println("Not found");
-        }
+        return null;
     }
 
     public void sortByTitle() {
@@ -78,5 +72,9 @@ public class Cart {
 
     public void sortByCost(){
         Collections.sort(itemsOrdered, Media.COMPARE_BY_COST_TITLE);
+    }
+
+    public void emptyCart(){
+        itemsOrdered.clear();
     }
 }
