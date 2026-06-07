@@ -4,56 +4,47 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Book extends Media {
-    List<String> authors = new ArrayList<String>();
+    private List<String> authors = new ArrayList<String>();
 
-    public Book() {
-        super();
+    public Book(String title, String category, float cost) {
+        super(title, category, cost);
     }
 
-    public Book(int id, String title, String category, float cost, List<String> authors) {
-        super(id, title, category, cost);
+    public Book(String title) {
+        super(title);
     }
 
-    public Book (String title, String category, float cost) {
-        super();
-        setCategory(category);
-        setTitle(title);
-        setCost(cost);
-    }
-
-    public List<String> getAuthors() {
-        return authors;
-    }
-
-    public void setAuthors(List<String> authors) {
-        this.authors = authors;
-    }
-
-    public void addAuthor(String authorName){
-        if (!authors.contains(authorName)) {
-            authors.add(authorName);
-            System.out.println("Author added: " + authorName);
-        } else {
+    public void addAuthor(String authorName) {
+        if (authors.contains(authorName)) {
             System.out.println("Author already exists!");
+            return;
         }
+        authors.add(authorName);
     }
-
-    public void removerAuthor(String authorName){
-        if(authors.contains(authorName)){
-            authors.remove(authorName);
-            System.out.println("Author removed: " + authorName);
-        } else {
-            System.out.println("Author does not exist!");
+    public void removeAuthor(String authorName) {
+        if (!authors.contains(authorName)) {
+            System.out.println("Author does not exists!");
+            return;
         }
-
-    }
-
-    public void printAuthors(){
-        System.out.println(authors);
+        authors.remove(authorName);
     }
 
     @Override
     public String toString() {
-        return "Book: " + this.getTitle() + " - Category: " + this.getCategory() + " - Cost: " + this.getCost() + " - Cost: " +  this.getCost();
+        String result = getId() + ". Book - "
+                + this.getTitle() + " - "
+                + this.getCategory() + " - ";
+
+        if (authors.isEmpty()) {
+            result += "No author";
+        } else {
+            for (String author : authors) {
+                result += author + ", ";
+            }
+            result = result.substring(0, result.length() - 2);
+        }
+
+        result += ": " + getCost() + " $";
+        return result;
     }
 }

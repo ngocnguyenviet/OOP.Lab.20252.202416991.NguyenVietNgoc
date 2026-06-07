@@ -1,8 +1,6 @@
 package hust.soict.hedspi.aims.cart;
 
 import hust.soict.hedspi.aims.MenuView;
-import hust.soict.hedspi.aims.media.Media;
-import hust.soict.hedspi.aims.media.Playable;
 
 import java.util.Scanner;
 

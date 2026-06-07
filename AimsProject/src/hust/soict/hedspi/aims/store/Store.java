@@ -1,8 +1,5 @@
 package hust.soict.hedspi.aims.store;
 
-import hust.soict.hedspi.aims.media.DigitalVideoDisc;
-import hust.soict.hedspi.aims.media.Media;
-
 import java.util.ArrayList;
 
 public class Store {

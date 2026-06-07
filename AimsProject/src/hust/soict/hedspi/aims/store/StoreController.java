@@ -2,11 +2,7 @@ package hust.soict.hedspi.aims.store;
 
 import hust.soict.hedspi.aims.MenuView;
 import hust.soict.hedspi.aims.cart.Cart;
-import hust.soict.hedspi.aims.media.DigitalVideoDisc;
-import hust.soict.hedspi.aims.media.Media;
-import hust.soict.hedspi.aims.media.Playable;
 
-import java.awt.*;
 import java.util.Scanner;
 
 public class StoreController {
