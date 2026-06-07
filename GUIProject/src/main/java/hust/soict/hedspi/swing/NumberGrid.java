@@ -10,15 +10,12 @@ public class NumberGrid extends JFrame {
     private JButton btnDelete, btnReset;
     private JTextField tfDisplay;
 
-    public static void main(String[] args){
-        new NumberGrid();
-    }
+    public NumberGrid() {
 
-    public NumberGrid(){
         tfDisplay = new JTextField();
         tfDisplay.setComponentOrientation(
-                ComponentOrientation.RIGHT_TO_LEFT
-        );
+                ComponentOrientation.RIGHT_TO_LEFT);
+
         JPanel panelButtons = new JPanel(new GridLayout(4, 3));
         addButtons(panelButtons);
 
@@ -31,23 +28,6 @@ public class NumberGrid extends JFrame {
         setTitle("Number Grid");
         setSize(200, 200);
         setVisible(true);
-    }
-
-    public class ButtonListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e){
-            String button = e.getActionCommand();
-            if(button.charAt(0) >= '0' && button.charAt(0) <= '9'){
-                tfDisplay.setText(tfDisplay.getText() + button);
-            } else if(button.equals("DEL")){
-                String currentText = tfDisplay.getText();
-                if(currentText != null && currentText.length() > 0){
-                    tfDisplay.setText(currentText.substring(0, currentText.length() - 1));
-                }
-            } else {
-                tfDisplay.setText("");
-            }
-        }
     }
 
     void addButtons(JPanel panelButtons) {
@@ -70,4 +50,31 @@ public class NumberGrid extends JFrame {
         panelButtons.add(btnReset);
         btnReset.addActionListener(btnListener);
     }
+
+    public static void main(String[] args) {
+        new NumberGrid();
+    }
+
+    private class ButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String button = e.getActionCommand();
+
+            if (button.charAt(0) >= '0' && button.charAt(0) <= '9') {
+                tfDisplay.setText(tfDisplay.getText() + button);
+
+            } else if (button.equals("DEL")) {
+                String currentText = tfDisplay.getText();
+
+                if (currentText.length() > 0) {
+                    tfDisplay.setText(currentText.substring(0, currentText.length() - 1));
+                }
+
+            } else {
+                tfDisplay.setText("");
+            }
+        }
+    }
 }
+
+

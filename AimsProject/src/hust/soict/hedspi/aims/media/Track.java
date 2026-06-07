@@ -1,5 +1,9 @@
 package hust.soict.hedspi.aims.media;
 
+import hust.soict.hedspi.aims.exception.PlayerException;
+
+import java.util.Objects;
+
 public class Track implements Playable {
     private String title;
     private int length;
@@ -9,32 +13,35 @@ public class Track implements Playable {
         this.length = length;
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return title;
     }
 
-    public int getLength(){
+    public int getLength() {
         return length;
     }
 
     @Override
-    public void play(){
-        System.out.println("Playing track: " + getTitle());
-        System.out.println("Track length: " + getLength());
-    }
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
 
-    @Override
-    public boolean equals(Object obj){
-        if(obj == null || !(obj instanceof Track)){
+        if (!(obj instanceof Track other)) {
             return false;
         }
-        Track other = (Track) obj;
-        return (this.title != null && this.title.equalsIgnoreCase(other.getTitle()))
-        && (this.length == other.getLength());
+
+        return this.length == other.length
+                && Objects.equals(this.title, other.title);
     }
 
-    @Override
-    public String toString(){
-        return "Track: " + title + " (Length: " + length + " min)";
+    public void play() throws PlayerException {
+        if (this.getLength() > 0) {
+            System.out.println("Playing track: " + this.getTitle());
+            System.out.println("Track length: " + this.getLength());
+        }
+        else {
+            throw new PlayerException("ERROR: Track length is non-positive!");
+        }
     }
 }

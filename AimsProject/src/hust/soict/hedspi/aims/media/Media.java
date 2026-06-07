@@ -1,6 +1,7 @@
 package hust.soict.hedspi.aims.media;
 
 import java.util.Comparator;
+import java.util.Objects;
 
 public abstract class Media {
     private int id;
@@ -8,18 +9,33 @@ public abstract class Media {
     private String category;
     private float cost;
 
-    public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
-    public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
+    public static final Comparator<Media> COMPARE_BY_TITLE_COST =
+            new MediaComparatorByTitleCost();
+    public static final Comparator<Media> COMPARE_BY_COST_TITLE =
+            new MediaComparatorByCostTitle();
 
-    public Media(){
 
-    }
-
-    public Media(int id, String title, String category, float cost) {
-        this.id = id;
+    public Media(String title, String category, float cost) {
         this.title = title;
         this.category = category;
         this.cost = cost;
+    }
+
+    public Media(String title) {
+        this.title = title;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof Media other)) {
+            return false;
+        }
+
+        return Objects.equals(this.title, other.title);
     }
 
     public int getId() {
@@ -52,34 +68,5 @@ public abstract class Media {
 
     public void setCost(float cost) {
         this.cost = cost;
-    }
-
-    public boolean isMatch(String title){
-        if(title == null || title.trim().isEmpty()){
-            return false;
-        }
-
-        String lowerCaseTitle = getTitle().toLowerCase();
-        String[] keywords = title.toLowerCase().split("\\s+");
-
-        for(String word : keywords){
-            if(lowerCaseTitle.contains(word)){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public boolean equals(Object obj){
-        if(obj == null || !(obj instanceof Media)){
-            return false;
-        }
-
-        Media other = (Media) obj;
-        if(this.title == null || other.getTitle() == null){
-            return false;
-        }
-        return this.title.equalsIgnoreCase(other.getTitle());
     }
 }
